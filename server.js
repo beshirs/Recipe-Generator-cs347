@@ -4,6 +4,8 @@ const path = require('path');
 const PORT = process.env.PORT || 3500;
 const fs = require('fs');
 const csv = require('csv-parser');
+const filterRecipes = require('./utils/filterRecipes');
+
 
 let recipes = [];
 
@@ -48,9 +50,7 @@ app.get('/searchResult', (req, res) => {
     return res.send('Please provide an ingredient to search.');
   }
 
-  const results = recipes.filter(recipe =>
-    recipe['Cleaned_Ingredients']?.includes(query)
-  );
+  const results = filterRecipes(recipes, query);
 
   if (results.length === 0) {
     return res.send('No recipes found with that ingredient.');
