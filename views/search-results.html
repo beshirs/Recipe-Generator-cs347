@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h2>Results for "<span id="query-term"></span>"</h2>
+    <div id="results-container">
+        <!-- Results will be inserted here dynamically -->
+    </div>
+    <p><a href="/search">Back to Search</a></p>
+
+    <script>
+        // Get the query parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('ingredient');
+        
+        // Display the query term
+        document.getElementById('query-term').textContent = query;
+        
+        // Fetch the search results
+        fetch(`/api/search?ingredient=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(results => {
+                const container = document.getElementById('results-container');
+                
+                if (results.length === 0) {
+                    container.innerHTML = '<p>No recipes found with that ingredient.</p>';
+                    return;
+                }
+                
+                const html = results.map(r => `
+                    <h3>${r.Title}</h3>
+                    <p><strong>Ingredients:</strong> ${r.Cleaned_Ingredients}</p>
+                    <p><strong>Instructions:</strong> ${r.Instructions}</p>
+                    <hr/>
+                `).join('');
+                
+                container.innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Error fetching recipes:', error);
+                document.getElementById('results-container').innerHTML = 
+                    '<p>Error loading recipes. Please try again.</p>';
+            });
+    </script>
+</body>
+</html>

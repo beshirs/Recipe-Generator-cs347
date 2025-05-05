@@ -6,7 +6,6 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const filterRecipes = require('./utils/filterRecipes');
 
-
 let recipes = [];
 
 // Load recipes on server start
@@ -25,6 +24,9 @@ fs.createReadStream(path.join(__dirname, 'recipes-sample.csv'))
 // Middleware to serve static HTML files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set up views directory for HTML templates
+app.use('/views', express.static(path.join(__dirname, 'views')));
+
 // Home page ('/' and '/home')
 app.get(['/', '/home'], (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -32,38 +34,29 @@ app.get(['/', '/home'], (req, res) => {
 
 // Search page ('/search') — shows form
 app.get('/search', (req, res) => {
-  res.send(`
-    <h2>Recipe Search</h2>
-    <form method="GET" action="/searchResult">
-      <input name="ingredient" placeholder="Enter an ingredient..." required />
-      <button type="submit">Search</button>
-    </form>
-    <p><a href="/about">About</a> | <a href="/recipes">All Recipes</a> | <a href="/home"> Home</a></p>
-  `);
+  res.sendFile(path.join(__dirname, 'views', 'search.html'));
 });
 
-// Search Result page ('/searchResult') — processes search
+// Search Results page ('/searchResult') 
 app.get('/searchResult', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views', 'search-results.html'));
+});
+
+// API endpoint to get search results
+app.get('/api/search', (req, res) => {
   const query = req.query.ingredient?.toLowerCase();
 
   if (!query) {
-    return res.send('Please provide an ingredient to search.');
+    return res.json([]);
   }
 
   const results = filterRecipes(recipes, query);
+  res.json(results);
+});
 
-  if (results.length === 0) {
-    return res.send('No recipes found with that ingredient.');
-  }
-
-  const html = results.map(r => `
-    <h3>${r.Title}</h3>
-    <p><strong>Ingredients:</strong> ${r.Cleaned_Ingredients}</p>
-    <p><strong>Instructions:</strong> ${r.Instructions}</p>
-    <hr/>
-  `).join('');
-
-  res.send(`<h2>Results for "${query}"</h2>${html}<p><a href="/search">Back to Search</a></p>`);
+// API endpoint to get all recipes
+app.get('/api/recipes', (req, res) => {
+  res.json(recipes);
 });
 
 // About page ('/about')
@@ -73,18 +66,7 @@ app.get('/about', (req, res) => {
 
 // Recipes page ('/recipes')
 app.get('/recipes', (req, res) => {
-  if (recipes.length === 0) {
-    return res.send('No recipes available.');
-  }
-
-  const html = recipes.map(r => `
-    <h3>${r.Title}</h3>
-    <p><strong>Ingredients:</strong> ${r.Cleaned_Ingredients}</p>
-    <p><strong>Instructions:</strong> ${r.Instructions}</p>
-    <hr/>
-  `).join('');
-
-  res.send(`<h2>All Recipes</h2>${html}<p><a href="/">Back to Home</a></p>`);
+  res.sendFile(path.join(__dirname, 'views', 'recipes.html'));
 });
 
 // 404 page
