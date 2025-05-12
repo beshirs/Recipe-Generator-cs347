@@ -24,6 +24,20 @@ fs.createReadStream(path.join(__dirname, 'recipes-sample.csv'))
 // Middleware to serve static HTML files
 app.use(express.static(path.join(__dirname, 'public')));
 
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from React build
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    // Skip API routes
+    if (req.path.startsWith('/api/')) {
+      return next();
+    }
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+}
+
 // Set up views directory for HTML templates
 app.use('/views', express.static(path.join(__dirname, 'views')));
 
