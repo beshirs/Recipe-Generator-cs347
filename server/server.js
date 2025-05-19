@@ -9,6 +9,7 @@ const filterRecipes = require('./utils/filterRecipes');
 let recipes = [];
 
 // Load recipes on server start
+// fs.createReadStream(path.join(__dirname, 'Data/recipes.csv'))
 fs.createReadStream(path.join(__dirname, 'recipes-sample.csv'))
   .pipe(csv())
   .on('data', (row) => {

@@ -11,11 +11,8 @@
     },
     "dependencies": {
         "concurrently": "^8.2.0",
-<<<<<<< HEAD
         "express": "^5.1.0",
-=======
         "mongoose": "^8.14.3",
->>>>>>> 88411c8 ( edist)
         "nodemon": "^3.0.1"
     }
 }

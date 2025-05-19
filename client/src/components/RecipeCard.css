@@ -28,12 +28,14 @@
   }
   
   .recipe-ingredients ul {
+    color: black;
     padding-left: 1.5rem;
     margin-top: 0.5rem;
   }
   
   .recipe-instructions {
     max-height: 100px;
+    color: black;
     overflow: hidden;
     transition: max-height 0.3s;
   }
