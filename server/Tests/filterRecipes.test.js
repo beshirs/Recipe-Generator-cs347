@@ -48,4 +48,3 @@ test('returns empty array if ingredient is null', () => {
   const result = filterRecipes(recipes, null);
   expect(result).toEqual([]);
 });
-

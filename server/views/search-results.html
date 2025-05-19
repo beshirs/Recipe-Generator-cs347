@@ -8,16 +8,13 @@
 <body>
     <h2>Results for "<span id="query-term"></span>"</h2>
     <div id="results-container">
-        <!-- Results will be inserted here dynamically -->
     </div>
     <p><a href="/search">Back to Search</a></p>
 
     <script>
-        // Get the query parameter from URL
         const urlParams = new URLSearchParams(window.location.search);
         const query = urlParams.get('ingredient');
         
-        // Display the query term
         document.getElementById('query-term').textContent = query;
         
         // Fetch the search results

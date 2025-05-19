@@ -1,13 +1,84 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 16px;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Nav Bar styles */
+nav {
+  background-color: #1e293b;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+nav a {
+  color: #93c5fd;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-size: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #facc15;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+/* Button styles */
+.action-buttons {
+  margin: 2rem 0;
+}
+
+.action-buttons a {
+  text-decoration: none;
+}
+
+.action-buttons button {
+  padding: 0.75rem 2rem;
+  margin: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.action-buttons button:hover {
+  background-color: #059669;
+  transform: scale(1.05);
 }
