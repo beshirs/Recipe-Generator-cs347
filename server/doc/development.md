@@ -7,14 +7,23 @@
 2. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-repo-name/Recipe-Generator-cs347.git
-
+   git clone https://github.com/beshirs/Recipe-Generator-cs347.git
    ```
 
 3. cd Recipe-Generator-cs347
 
-4. npm install express
+4. cd server
 
-5. npm run dev
+5. npm install express
 
-6. Directs you to this browser: http://localhost:3000
+6. cd ..
+
+7. cd client
+
+8. npm install react-scripts
+
+9. cd ..
+
+10. npm run dev
+
+11. Directs you to this browser: http://localhost:3000
