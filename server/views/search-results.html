@@ -29,12 +29,12 @@
                 }
                 
                 const html = results.map(r => `
-                    <h3>${r.Title}</h3>
-                    <p><strong>Ingredients:</strong> ${r.Cleaned_Ingredients}</p>
+                    <h3>${r.Name}</h3>
+                    <p><strong>Ingredients:</strong> ${r.Ingredients}</p>
                     <p><strong>Instructions:</strong> ${r.Instructions}</p>
                     <hr/>
-                `).join('');
-                
+                    `).join('');
+
                 container.innerHTML = html;
             })
             .catch(error => {

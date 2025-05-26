@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -136,3 +137,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+=======
+node_modules
+>>>>>>> 5b78aa8 (Cleaned repo: removed node_modules, added .gitignore, updated Docker config)

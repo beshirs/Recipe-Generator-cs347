@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import RecipeCard from '../components/RecipeCard';
 
 function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
@@ -9,19 +8,16 @@ function AllRecipes() {
   useEffect(() => {
     const fetchAllRecipes = async () => {
       try {
-        setLoading(true);
         const response = await fetch('/api/recipes');
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error ${response.status}`);
-        }
-        
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
         const data = await response.json();
+        console.log('Fetched recipes count:', data.length);
         setRecipes(data);
         setError(null);
       } catch (err) {
-        setError('Failed to fetch recipes. Please try again.');
         console.error('Error fetching recipes:', err);
+        setError('Failed to load recipes.');
       } finally {
         setLoading(false);
       }
@@ -30,24 +26,50 @@ function AllRecipes() {
     fetchAllRecipes();
   }, []);
 
-  if (loading) {
-    return <div className="loading">Loading recipes...</div>;
-  }
-
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
-
-  if (recipes.length === 0) {
-    return <div className="no-recipes">No recipes available.</div>;
-  }
+  if (loading) return <p>Loading recipes...</p>;
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+  if (recipes.length === 0) return <p>No recipes available.</p>;
 
   return (
-    <div className="all-recipes">
+    <div style={{ padding: '2rem' }}>
       <h2>All Recipes</h2>
-      <div className="recipes-grid">
+
+      <div style={{ display: 'grid', gap: '2rem' }}>
         {recipes.map((recipe, index) => (
-          <RecipeCard key={index} recipe={recipe} />
+          <div
+            key={index}
+            style={{
+              background: '#f9f9f9',
+              color: '#333',
+              padding: '1.5rem',
+              borderRadius: '10px',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
+            }}
+          >
+            <h3>{recipe.title || recipe.Name || 'Untitled Recipe'}</h3>
+
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+              {Array.isArray(recipe.ingredients || recipe.Ingredients) ? (
+                (recipe.ingredients || recipe.Ingredients).map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))
+              ) : (
+                <li>{recipe.ingredients || recipe.Ingredients || 'None listed'}</li>
+              )}
+            </ul>
+
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              {Array.isArray(recipe.instructions || recipe.Instructions) ? (
+                (recipe.instructions || recipe.Instructions).map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))
+              ) : (
+                <li>{recipe.instructions || recipe.Instructions || 'No instructions'}</li>
+              )}
+            </ol>
+          </div>
         ))}
       </div>
     </div>
