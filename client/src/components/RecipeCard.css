@@ -1,59 +1,62 @@
 .recipe-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .recipe-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .recipe-title {
-    margin-top: 0;
-    color: #333;
-    font-size: 1.25rem;
-  }
-  
-  .recipe-ingredients {
-    margin: 1rem 0;
-  }
-  
-  .recipe-ingredients h4,
-  .recipe-instructions h4 {
-    color: #4caf50;
-    margin-bottom: 0.5rem;
-  }
-  
-  .recipe-ingredients ul {
-    color: black;
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .recipe-instructions {
-    max-height: 100px;
-    color: black;
-    overflow: hidden;
-    transition: max-height 0.3s;
-  }
-  
-  .recipe-instructions.expanded {
-    max-height: 1000px;
-  }
-  
-  .expand-button {
-    background: none;
-    border: none;
-    color: #4caf50;
-    cursor: pointer;
-    padding: 0;
-    margin-top: 0.5rem;
-    font-weight: 500;
-  }
-  
-  .expand-button:hover {
-    text-decoration: underline;
-  }
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-title {
+  margin-top: 0;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.recipe-ingredients h4,
+.recipe-instructions h4 {
+  color: #10b981;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.recipe-ingredients ul {
+  padding-left: 1.25rem;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.recipe-instructions {
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-height: 120px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.recipe-instructions.expanded {
+  max-height: 1000px;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  color: #10b981;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.expand-button:hover {
+  text-decoration: underline;
+}

@@ -1,84 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 16px;
+:root {
+  --bg: #f9fafb;
+  --text: #1f2937;
+  --accent: #10b981;
+  --accent-hover: #059669;
+  --outline: #e5e7eb;
+  --font: 'Segoe UI', Tahoma, sans-serif;
 }
 
 body {
-  background-color: #0f172a;
-  color: #f1f5f9;
-  display: grid;
-  place-content: center;
+  margin: 0;
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
   text-align: center;
-  padding: 2rem;
   min-height: 100vh;
+  justify-content: center;
 }
 
-/* Nav Bar styles */
-nav {
-  background-color: #1e293b;
-  padding: 1rem;
-  border-radius: 10px;
-  margin-bottom: 3rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-nav a {
-  color: #93c5fd;
-  text-decoration: none;
-  margin: 0 1.5rem;
-  font-size: 1.25rem;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #3b82f6;
-  text-decoration: underline;
-}
-
-header h1 {
+.home-header h1 {
   font-size: 3rem;
-  color: #facc15;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.subtitle {
+.tagline {
   font-size: 1.25rem;
-  color: #e2e8f0;
+  color: #6b7280;
   margin-bottom: 2rem;
 }
 
-/* Button styles */
-.action-buttons {
-  margin: 2rem 0;
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.action-buttons a {
-  text-decoration: none;
-}
-
-.action-buttons button {
-  padding: 0.75rem 2rem;
-  margin: 0.75rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #10b981;
+.btn {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
   color: white;
   border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
-.action-buttons button:hover {
-  background-color: #059669;
-  transform: scale(1.05);
+.btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn.outline {
+  background: none;
+  color: var(--text);
+  border: 2px solid var(--outline);
+}
+
+.btn.outline:hover {
+  background-color: var(--outline);
 }

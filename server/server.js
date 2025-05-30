@@ -3,12 +3,14 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const recipe = require('./utils/recipe');
+const pluralize = require('pluralize');
+
 
 
 // const PORT = process.env.PORT || 3500;
 const PORT = process.env.PORT || 3500;
 
-// Serve React frontend if in production
+// Serve React frontend 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 
@@ -21,8 +23,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/search', async (req, res) => {
-  const query = req.query.ingredient?.toLowerCase();
-  console.log(' Search API called with:', query);
+  const raw = req.query.ingredient?.toLowerCase() || '';
+  const query = pluralize.singular(raw);
+    console.log(' Search API called with:', query);
   if (!query) return res.json([]);
 
   try {
