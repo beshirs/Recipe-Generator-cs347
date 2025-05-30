@@ -49,10 +49,7 @@ The frontend will run at http://localhost:3000
 
 
 ## Todo List
--UI improvements
--Improve search with fuzzy matching (e.g., egg vs eggs)
--Add filter for dietary restrictions (vegan, gluten-free, etc.)
--Enable login & user accounts(reaching)
+UI improvements, Add filter for dietary restrictions (vegan, gluten-free, etc.), Enable login & user accounts(reaching)
 
 
   
