@@ -22,12 +22,37 @@ git clone https://github.com/beshirs/Recipe-Generator-cs347.git
 cd Recipe-Generator-cs347
 ```
 
-### Install backend dependencies
+### Backend setip
  - cd server
  - npm install
 
-### Install frontend dependencies
+### Frontend setup
  - cd ../client
  - npm install
-   
+
+### Run the application
+In the root folder, run both the frontend and backend:
+
+``` bash
+npm run dev
+```
+The backend will run at http://localhost:3500
+
+The frontend will run at http://localhost:3000
+
+## Existing Features
+- Search recipes by ingredient
+- Display recipe title, ingredients, and instructions
+- Toggle to expand long instructions
+- Save favorite recipes to local storage
+- View all recipes from the database
+
+
+## Todo List
+-UI improvements
+-Improve search with fuzzy matching (e.g., egg vs eggs)
+-Add filter for dietary restrictions (vegan, gluten-free, etc.)
+-Enable login & user accounts(reaching)
+
+
   
