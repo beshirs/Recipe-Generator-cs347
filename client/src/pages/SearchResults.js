@@ -21,6 +21,8 @@ function SearchResults() {
         }
         
         const data = await response.json();
+        console.log('API Response:', data); // Add this line
+        console.log('First recipe:', data[0]); // And this line
         setRecipes(data);
         setError(null);
       } catch (err) {

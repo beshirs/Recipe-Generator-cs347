@@ -2,33 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-require('dotenv').config(); // if using .env
 const recipe = require('./utils/recipe');
 
 
+// const PORT = process.env.PORT || 3500;
 const PORT = process.env.PORT || 3500;
-const fs = require('fs');
-const csv = require('csv-parser');
-const filterRecipes = require('./utils/filterRecipes');
-
-let recipes = [];
-
-// Load recipes on server start
-// fs.createReadStream(path.join(__dirname, 'Data/recipes.csv'))
-fs.createReadStream(path.join(__dirname, 'recipes-sample.csv'))
-  .pipe(csv())
-  .on('data', (row) => {
-    if (row['Cleaned_Ingredients']) {
-      row['Cleaned_Ingredients'] = row['Cleaned_Ingredients'].toLowerCase();
-    }
-    recipes.push(row);
-  })
-  .on('end', () => {
-    console.log('CSV loaded.');
-  });
-
-// Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve React frontend if in production
 if (process.env.NODE_ENV === 'production') {
@@ -41,19 +19,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   });
 }
-
-// Views (HTML templates)
-app.use('/views', express.static(path.join(__dirname, 'views')));
-
-// Route: Home
-app.get(['/', '/home'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
-
-// Route: Search Form
-app.get('/search', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'search.html'));
-});
 
 app.get('/api/search', async (req, res) => {
   const query = req.query.ingredient?.toLowerCase();
@@ -81,20 +46,8 @@ app.get('/api/recipes', async (req, res) => {
   }
 });
 
-// Route: About Page
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'about.html'));
-});
-
-// 404 Page
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-});
-
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://bsaid2004:K0y2iR9kuW03Robg@cluster347.uraihne.mongodb.net/recipeDB?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect('mongodb+srv://taha:Myballs12@cluster347.uraihne.mongodb.net/recipeDB?retryWrites=true&w=majority', {
 }).then(() => {
   console.log('Connected to MongoDB');
 }).catch(err => {
@@ -105,11 +58,3 @@ mongoose.connect('mongodb+srv://bsaid2004:K0y2iR9kuW03Robg@cluster347.uraihne.mo
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
-
-//using MongoDB uri from env
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));

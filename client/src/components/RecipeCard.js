@@ -4,14 +4,21 @@ import './RecipeCard.css';
 function RecipeCard({ recipe }) {
   const [expanded, setExpanded] = useState(false);
 
+  const title = recipe.Title || recipe.Name;
+  const ingredientsData = recipe.Cleaned_Ingredients || recipe.Ingredients;
+
   // Format ingredients for display
-  const ingredients = recipe.Cleaned_Ingredients
-    ? recipe.Cleaned_Ingredients.split(',').map(ingredient => ingredient.trim())
-    : [];
+  // const ingredients = recipe.Cleaned_Ingredients
+  //   ? recipe.Cleaned_Ingredients.split(',').map(ingredient => ingredient.trim())
+  //   : [];
+
+  const ingredients = recipe.Cleaned_Ingredients || recipe.Ingredients
+  ? ingredientsData.split(',').map(ingredient => ingredient.trim())
+  : [];
 
   return (
     <div className="recipe-card">
-      <h3 className="recipe-title">{recipe.Title}</h3>
+      <h3 className="recipe-title">{title}</h3>
       
       <div className="recipe-ingredients">
         <h4>Ingredients:</h4>

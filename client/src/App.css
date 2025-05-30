@@ -3,30 +3,38 @@
 }
 
 .navbar {
-  background-color: #333;
+  background-color: #2c3e50;
   color: white;
-  padding: 10px 20px;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: white;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
 .nav-menu {
@@ -34,21 +42,61 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .nav-item {
-  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
   color: #ffd700;
+}
+
+/* Title content*/
+.main-content h1 {
+  background: linear-gradient(to right, #ff0844 0%, #ffb199 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-align: left;
+  font-size: 4.5rem;
+  margin-top: 2rem;
+  padding-left: 0rem;
+  max-width: 100%;
+}
+
+.main-content h2 {
+  background: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-align: center;
+}
+
+.main-content p {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .content-container {
@@ -95,6 +143,131 @@
 
 .cta-buttons {
   margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #45a049;
+}
+
+.btn-secondary {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+  margin-left: 1rem;
+}
+
+.btn-secondary:hover {
+  background-color: #e1e1e1;
+}
+
+.hero-section {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(45deg, #2c3e50 30%, #3498db 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.features-section {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #3498db;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.feature-description {
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .cta-buttons {
+    justify-content: center;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .search-page {
@@ -230,9 +403,11 @@
 }
 
 .about-title {
+  display: flex;
   font-size: 30px;
   color: #facc15;
   text-align: left;
+  margin-top: 3rem;
 }
 
 .about-description {

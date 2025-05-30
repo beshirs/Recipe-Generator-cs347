@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="about-page">
       <div className="about-title">
-      <h2>About Recipe Finder</h2>
+      <h2>About Recipe Generator</h2>
       </div>
       <div className="about-description"> 
       <p>
