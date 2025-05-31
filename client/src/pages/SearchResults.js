@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import RecipeCard from '../components/RecipeCard';
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedSections, setExpandedSections] = useState({});
 
   const ingredient = searchParams.get('ingredient');
 
@@ -33,11 +35,24 @@ function SearchResults() {
     }
   }, [ingredient]);
 
+  const handleToggleSection = (index, section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [index]: {
+        ...prev[index],
+        [section]: !prev[index]?.[section]
+      }
+    }));
+  };
+
   const saveToLocalStorage = (recipe) => {
     const existing = JSON.parse(localStorage.getItem('myRecipes')) || [];
     const isDuplicate = existing.some((r) => r.Name === recipe.Name || r.Title === recipe.Title);
     if (!isDuplicate) {
       localStorage.setItem('myRecipes', JSON.stringify([...existing, recipe]));
+      alert('Recipe saved successfully!');
+    } else {
+      alert('This recipe is already saved!');
     }
   };
 
@@ -64,14 +79,13 @@ function SearchResults() {
       <h2>Results for "{ingredient}"</h2>
       <div className="recipes-grid">
         {recipes.map((recipe, index) => (
-          <div key={index} className="recipe-card">
-            <h3 className="recipe-title">{recipe.Name || recipe.Title}</h3>
-            <p><strong>Ingredients:</strong> {recipe.Cleaned_Ingredients}</p>
-            <p><strong>Instructions:</strong> {recipe.Instructions}</p>
-            <button onClick={() => saveToLocalStorage(recipe)} className="btn btn-secondary">
-              Save
-            </button>
-          </div>
+          <RecipeCard
+            key={index}
+            recipe={recipe}
+            expanded={expandedSections[index]}
+            onToggleSection={(section) => handleToggleSection(index, section)}
+            saveToLocalStorage={saveToLocalStorage}
+          />
         ))}
       </div>
       <Link to="/search" className="back-link">Back to Search</Link>

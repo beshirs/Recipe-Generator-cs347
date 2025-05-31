@@ -1,46 +1,73 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './RecipeCard.css';
 
-function RecipeCard({ recipe }) {
-  const [expanded, setExpanded] = useState(false);
-
-  const title = recipe.Title || recipe.Name || 'Untitled Recipe';
-  const ingredientsRaw = recipe.Cleaned_Ingredients || recipe.Ingredients || '';
-  const ingredients = ingredientsRaw
-    .split(',')
-    .map(ing => ing.trim())
-    .filter(Boolean); // removes empty strings
-
+function RecipeCard({ 
+  recipe, 
+  expanded, 
+  onToggleSection, 
+  onRemove,
+  saveToLocalStorage
+}) {
   return (
-    <div className="recipe-card">
-      <h3 className="recipe-title">{title}</h3>
+    <div className={`recipe-card ${expanded?.ingredients || expanded?.instructions ? 'expanded' : ''}`}>
+      <h3 className="recipe-card-title">{recipe.title || recipe.Name || 'Untitled Recipe'}</h3>
+      
+      <div className="recipe-card-content">
+        <div className="recipe-buttons-container">
+          <button 
+            onClick={() => onToggleSection('ingredients')} 
+            className="btn btn-primary recipe-button"
+          >
+            {expanded?.ingredients ? 'Hide Ingredients' : 'Show Ingredients'}
+          </button>
+          <button 
+            onClick={() => onToggleSection('instructions')} 
+            className="btn btn-primary recipe-button"
+          >
+            {expanded?.instructions ? 'Hide Instructions' : 'Show Instructions'}
+          </button>
+          <button 
+            onClick={() => saveToLocalStorage(recipe)}
+            className="btn btn-secondary recipe-button"
+          >
+            Save Recipe
+          </button>
+          {onRemove && (
+            <button 
+              onClick={onRemove} 
+              className="btn btn-secondary recipe-button"
+            >
+              Remove Recipe
+            </button>
+          )}
+        </div>
 
-      {ingredients.length > 0 && (
-        <div className="recipe-ingredients">
-          <h4>Ingredients:</h4>
-          <ul>
-            {ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
+        <div className={`recipe-section ${expanded?.ingredients ? 'expanded' : ''}`}>
+          <p className="recipe-section-title">Ingredients:</p>
+          <ul className="recipe-ingredients-list">
+            {Array.isArray(recipe.ingredients || recipe.Ingredients) ? (
+              (recipe.ingredients || recipe.Ingredients).map((item, i) => (
+                <li key={i}>{item}</li>
+              ))
+            ) : (
+              <li>{recipe.ingredients || recipe.Ingredients || 'None listed'}</li>
+            )}
           </ul>
         </div>
-      )}
 
-      {recipe.Instructions && (
-        <div className={`recipe-instructions ${expanded ? 'expanded' : ''}`}>
-          <h4>Instructions:</h4>
-          <p>{recipe.Instructions}</p>
+        <div className={`recipe-section ${expanded?.instructions ? 'expanded' : ''}`}>
+          <p className="recipe-section-title">Instructions:</p>
+          <ol className="recipe-instructions-list">
+            {Array.isArray(recipe.instructions || recipe.Instructions) ? (
+              (recipe.instructions || recipe.Instructions).map((step, i) => (
+                <li key={i}>{step}</li>
+              ))
+            ) : (
+              <li>{recipe.instructions || recipe.Instructions || 'No instructions'}</li>
+            )}
+          </ol>
         </div>
-      )}
-
-      {recipe.Instructions && recipe.Instructions.length > 120 && (
-        <button 
-          className="expand-button" 
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? 'Show Less' : 'Show More'}
-        </button>
-      )}
+      </div>
     </div>
   );
 }

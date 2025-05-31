@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import RecipeCard from '../components/RecipeCard';
 
 function MyRecipes() {
   const [savedRecipes, setSavedRecipes] = useState([]);
+  const [expandedSections, setExpandedSections] = useState({});
 
   // Load saved recipes from localStorage
   useEffect(() => {
@@ -16,24 +18,34 @@ function MyRecipes() {
     localStorage.setItem('myRecipes', JSON.stringify(updated));
   };
 
-  return (
-    <div className="my-recipes">
-      <h2>My Recipes</h2>
+  const handleToggleSection = (index, section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [index]: {
+        ...prev[index],
+        [section]: !prev[index]?.[section]
+      }
+    }));
+  };
 
-      {savedRecipes.length === 0 ? (
-        <p>No saved recipes yet.</p>
-      ) : (
-        savedRecipes.map((recipe, index) => (
-          <div key={index} className="recipe-card">
-            <h3>{recipe.Name}</h3>
-            <p><strong>Ingredients:</strong> {recipe.Ingredients}</p>
-            <p><strong>Instructions:</strong> {recipe.Instructions}</p>
-            <button onClick={() => handleRemove(index)} className="btn btn-secondary">
-              Remove
-            </button>
-          </div>
-        ))
-      )}
+  if (savedRecipes.length === 0) {
+    return <div className="no-recipes">No saved recipes yet.</div>;
+  }
+
+  return (
+    <div className="page">
+      <h2>My Recipes</h2>
+      <div className="recipes-grid">
+        {savedRecipes.map((recipe, index) => (
+          <RecipeCard
+            key={index}
+            recipe={recipe}
+            expanded={expandedSections[index]}
+            onToggleSection={(section) => handleToggleSection(index, section)}
+            onRemove={() => handleRemove(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

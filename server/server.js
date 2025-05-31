@@ -7,7 +7,6 @@ const pluralize = require('pluralize');
 
 
 
-// const PORT = process.env.PORT || 3500;
 const PORT = process.env.PORT || 3500;
 
 // Serve React frontend 

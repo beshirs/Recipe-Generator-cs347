@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import RecipeCard from '../components/RecipeCard';
 
 function AllRecipes() {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [expandedSections, setExpandedSections] = useState({});
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
@@ -26,50 +28,43 @@ function AllRecipes() {
     fetchAllRecipes();
   }, []);
 
-  if (loading) return <p>Loading recipes...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
-  if (recipes.length === 0) return <p>No recipes available.</p>;
+  const handleToggleSection = (index, section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [index]: {
+        ...prev[index],
+        [section]: !prev[index]?.[section]
+      }
+    }));
+  };
+
+  const saveToLocalStorage = (recipe) => {
+    const existing = JSON.parse(localStorage.getItem('myRecipes')) || [];
+    const isDuplicate = existing.some((r) => r.Name === recipe.Name || r.Title === recipe.Title);
+    if (!isDuplicate) {
+      localStorage.setItem('myRecipes', JSON.stringify([...existing, recipe]));
+      alert('Recipe saved successfully!');
+    } else {
+      alert('This recipe is already saved!');
+    }
+  };
+
+  if (loading) return <div className="loading">Loading recipes...</div>;
+  if (error) return <div className="error">{error}</div>;
+  if (recipes.length === 0) return <div className="no-recipes">No recipes available.</div>;
 
   return (
-    <div style={{ padding: '2rem' }}>
+    <div className="page">
       <h2>All Recipes</h2>
-
-      <div style={{ display: 'grid', gap: '2rem' }}>
+      <div className="recipes-grid">
         {recipes.map((recipe, index) => (
-          <div
+          <RecipeCard
             key={index}
-            style={{
-              background: '#f9f9f9',
-              color: '#333',
-              padding: '1.5rem',
-              borderRadius: '10px',
-              boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
-            }}
-          >
-            <h3>{recipe.title || recipe.Name || 'Untitled Recipe'}</h3>
-
-            <p><strong>Ingredients:</strong></p>
-            <ul>
-              {Array.isArray(recipe.ingredients || recipe.Ingredients) ? (
-                (recipe.ingredients || recipe.Ingredients).map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))
-              ) : (
-                <li>{recipe.ingredients || recipe.Ingredients || 'None listed'}</li>
-              )}
-            </ul>
-
-            <p><strong>Instructions:</strong></p>
-            <ol>
-              {Array.isArray(recipe.instructions || recipe.Instructions) ? (
-                (recipe.instructions || recipe.Instructions).map((step, i) => (
-                  <li key={i}>{step}</li>
-                ))
-              ) : (
-                <li>{recipe.instructions || recipe.Instructions || 'No instructions'}</li>
-              )}
-            </ol>
-          </div>
+            recipe={recipe}
+            expanded={expandedSections[index]}
+            onToggleSection={(section) => handleToggleSection(index, section)}
+            saveToLocalStorage={saveToLocalStorage}
+          />
         ))}
       </div>
     </div>

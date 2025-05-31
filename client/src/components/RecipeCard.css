@@ -1,15 +1,108 @@
 .recipe-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
-  margin-bottom: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  height: auto;
 }
 
 .recipe-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card-title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.recipe-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-buttons-container {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Forum", serif;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #21528b;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #1a4472;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #f8f9fa;
+  color: #2c3e50;
+  border: 1px solid #dee2e6;
+}
+
+.btn-secondary:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.recipe-button {
+  width: 100%;
+}
+
+.recipe-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  margin-top: 0;
+}
+
+.recipe-section.expanded {
+  max-height: 300px;
+  overflow: auto;
+  margin-top: 1rem;
+}
+
+.recipe-section-title {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.recipe-ingredients-list {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
+
+.recipe-instructions-list {
+  list-style-type: decimal;
+  padding-left: 1.2rem;
 }
 
 .recipe-title {

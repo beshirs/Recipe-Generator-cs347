@@ -7,6 +7,7 @@ import AllRecipes from './pages/AllRecipes';
 import NotFound from './pages/NotFound';
 import './App.css';
 import MyRecipes from './pages/MyRecipes'; 
+import NavSearch from './components/NavSearch';
 
 
 function App() {
@@ -15,7 +16,10 @@ function App() {
       <div className="App">
         <nav className="navbar">
           <div className="nav-container">
-            <Link to="/" className="nav-logo">Cookly</Link>
+            <div className="nav-logo-section">
+              <Link to="/" className="nav-logo">Cookly</Link>
+              <NavSearch />
+            </div>
             <ul className="nav-menu">
               <li className="nav-item">
                 <Link to="/" className="nav-link">Home</Link>
@@ -23,7 +27,9 @@ function App() {
               <li className="nav-item">
                 <Link to="/recipes" className="nav-link">All Recipes</Link>
               </li>
-              <Link to="/my-recipes" className="nav-link">My Recipes</Link>
+              <li className="nav-item">
+                <Link to="/my-recipes" className="nav-link">My Recipes</Link>
+              </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">About</Link>
               </li>
