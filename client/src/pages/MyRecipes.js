@@ -43,6 +43,7 @@ function MyRecipes() {
             expanded={expandedSections[index]}
             onToggleSection={(section) => handleToggleSection(index, section)}
             onRemove={() => handleRemove(index)}
+            showSaveButton={false}
           />
         ))}
       </div>

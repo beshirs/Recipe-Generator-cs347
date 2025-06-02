@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
+.nav-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 0rem;
+}
+
+.search-icon-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  z-index: 2;
+  margin-right: 1rem;
+}
+
+.search-icon-button:hover {
+  transform: scale(1.1);
+}
+
+.nav-search-bar {
+  position: absolute;
+  left: 2rem;
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.nav-search-bar.expanded {
+  width: 400px;
+  opacity: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-search-input {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  min-width: 350px;
+  background: white;
+  color: #2c3e50;
+  padding-right: 0;
+  font-family: 'Forum', serif;
+}
+
+.nav-search-input::placeholder {
+  color: #94a3b8;
+  font-family: 'Forum', serif;
+}
+
+.nav-search-submit {
+  background: rgb(88, 116, 159);
+  color: white;
+  border: none;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: -5rem;
+  font-family: 'Forum', serif;
+  font-size: 1rem;
+}
+
+.nav-search-submit:hover {
+  /* background: #1a4472; */
+  background: #21528b;
+} 

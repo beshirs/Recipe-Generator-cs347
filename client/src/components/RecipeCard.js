@@ -6,8 +6,12 @@ function RecipeCard({
   expanded, 
   onToggleSection, 
   onRemove,
-  saveToLocalStorage
+  saveToLocalStorage,
+  showSaveButton = true
 }) {
+  // Check if saveToLocalStorage is an empty function
+  const isStaticSaveButton = saveToLocalStorage?.toString() === '() => {}';
+
   return (
     <div className={`recipe-card ${expanded?.ingredients || expanded?.instructions ? 'expanded' : ''}`}>
       <h3 className="recipe-card-title">{recipe.title || recipe.Name || 'Untitled Recipe'}</h3>
@@ -26,12 +30,14 @@ function RecipeCard({
           >
             {expanded?.instructions ? 'Hide Instructions' : 'Show Instructions'}
           </button>
-          <button 
-            onClick={() => saveToLocalStorage(recipe)}
-            className="btn btn-secondary recipe-button"
-          >
-            Save Recipe
-          </button>
+          {showSaveButton && saveToLocalStorage && (
+            <button 
+              onClick={isStaticSaveButton ? undefined : () => saveToLocalStorage(recipe)}
+              className={`btn btn-secondary recipe-button ${isStaticSaveButton ? 'static-button' : ''}`}
+            >
+              Save Recipe
+            </button>
+          )}
           {onRemove && (
             <button 
               onClick={onRemove} 

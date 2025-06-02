@@ -69,7 +69,7 @@ function SearchResults() {
       <div className="page no-results">
         <h2>No recipes found with "{ingredient}"</h2>
         <p>Try searching for a different ingredient.</p>
-        <Link to="/search" className="btn btn-primary">Back to Search</Link>
+        <Link to="/" className="btn btn-primary">Back to Search</Link>
       </div>
     );
   }

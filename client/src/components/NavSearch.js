@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './NavSearch.css';
 
 function NavSearch() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -45,7 +46,7 @@ function NavSearch() {
         <input
           type="text"
           className="nav-search-input"
-          placeholder="Search by ingredient (e.g. 'chicken', 'eggs', 'spinach'))"
+          placeholder="Search by ingredient (e.g. 'chicken', 'spinach')"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
