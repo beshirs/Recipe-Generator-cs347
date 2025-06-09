@@ -30,7 +30,7 @@ cd server
 npm install
 ```
 
-Frontend Setup
+Frontend Setup (Note: During installation, you may see vulnerability warnings from npm. These are common and can typically be ignored unless they block functionality)
 ``` bash
 cd ../client
 npm install
@@ -38,6 +38,9 @@ npm install
 
 
 ### Run the application
+```bash
+cd ..
+```
 In the root folder, run both the frontend and backend:
 
 ``` bash
