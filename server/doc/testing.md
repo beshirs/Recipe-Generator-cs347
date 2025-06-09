@@ -25,9 +25,11 @@ We are currently focusing on testing features like searching for recipes by ingr
 ### Running the Tests
 
 To run all tests, first ensure dependencies are installed:
-
-```bash
-npm install
+``` bash
+cd ..
+cd server
+cd Tests
+npm test
 ```
 
 
