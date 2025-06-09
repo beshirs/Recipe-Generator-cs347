@@ -9,7 +9,7 @@ function RecipeCard({
   saveToLocalStorage,
   showSaveButton = true
 }) {
-  // Check if saveToLocalStorage is an empty function
+  // checks if saveToLocalStorage is an empty function
   const isStaticSaveButton = saveToLocalStorage?.toString() === '() => {}';
 
   return (

@@ -5,13 +5,11 @@ function MyRecipes() {
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [expandedSections, setExpandedSections] = useState({});
 
-  // Load saved recipes from localStorage
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('myRecipes')) || [];
     setSavedRecipes(saved);
   }, []);
 
-  // Remove a recipe
   const handleRemove = (indexToRemove) => {
     const updated = savedRecipes.filter((_, index) => index !== indexToRemove);
     setSavedRecipes(updated);
