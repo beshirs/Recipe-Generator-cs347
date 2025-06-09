@@ -58,5 +58,5 @@ mongoose.connect('mongodb+srv://taha:Myballs12@cluster347.uraihne.mongodb.net/re
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:3000`);
 });

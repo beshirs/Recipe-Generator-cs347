@@ -270,8 +270,11 @@
 .error,
 .no-results,
 .no-recipes {
+  font-size: 1.5rem;
   text-align: center;
-  padding-bottom: 2rem 0;
+  position: relative;
+  /* padding-bottom: 2rem 0; */
+  top: 120px;
 }
 
 h2 {

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './NavSearch.css';
 
 function NavSearch() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 

@@ -40,7 +40,10 @@ function AllRecipes() {
 
   const saveToLocalStorage = (recipe) => {
     const existing = JSON.parse(localStorage.getItem('myRecipes')) || [];
-    const isDuplicate = existing.some((r) => r.Name === recipe.Name || r.Title === recipe.Title);
+  
+    const getKey = (r) => r.Title || r.Name || '';
+    const isDuplicate = existing.some((r) => getKey(r) === getKey(recipe));
+  
     if (!isDuplicate) {
       localStorage.setItem('myRecipes', JSON.stringify([...existing, recipe]));
       alert('Recipe saved successfully!');
