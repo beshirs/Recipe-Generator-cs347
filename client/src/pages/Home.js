@@ -61,21 +61,30 @@ function Home() {
           saveToLocalStorage={() => {}}
         />
         <div className="home-sectionrecipes-preview-second">
-        <RecipeCard
-          recipe={sampleRecipe2}
-          expanded={false}
-          onToggleSection={() => {}}
-          showSaveButton={true}
-          saveToLocalStorage={() => {}}
-        />
+          <RecipeCard
+            recipe={sampleRecipe2}
+            expanded={false}
+            onToggleSection={() => {}}
+            showSaveButton={true}
+            saveToLocalStorage={() => {}}
+          />
         </div>
       </div>
 
       <div className="home-section intro-section">
         <div className="intro-content">
           <h2>Welcome to Cookly</h2>
-          <p>Discover delicious recipes based on ingredients you already have. From quick weeknight dinners to impressive dishes, find the perfect recipe for any occasion.</p>
-          
+          <p>
+            Discover delicious recipes based on ingredients you already have.
+            From quick weeknight dinners to impressive dishes, find the perfect
+            recipe for any occasion.
+          </p>
+
+          {/* 🔔 Note added right before the buttons */}
+          <p style={{ fontStyle: 'italic', fontSize: '0.9rem', color: '#666', marginBottom: '1rem' }}>
+            The recipes shown above are just sample previews. Buttons below may not be fully functional yet.
+          </p>
+
           <div className="cta-buttons">
             <button
               className="btn btn-primary"
