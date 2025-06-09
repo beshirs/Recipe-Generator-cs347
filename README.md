@@ -6,7 +6,8 @@
 
 Instead of requiring users to browse long lists or enter full recipe names, Cookly enables them to input one or more ingredients (e.g., `"eggs"`, `"spinach"`, etc.) and instantly receive a list of suggested recipes. The app is built with a user-first approach—minimalist, responsive, and quick to use.
 
-Saved recipes are stored locally, and all recipe data is cleaned and stored in a MongoDB database.
+All recipe data is clean and stored in a MongoDB database.
+We use Docker to conatinerize the application, which ensures that it runs the same way on any computer.
 
 ---
 
