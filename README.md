@@ -27,13 +27,13 @@ cd Recipe-Generator-cs347
 Backend Setup
 ``` bash
 cd server
-npm install
+npm install express
 ```
 
 Frontend Setup (Note: During installation, you may see vulnerability warnings from npm. These are common and can typically be ignored unless they block functionality)
 ``` bash
 cd ../client
-npm install
+npm install express
 ```
 
 
