@@ -25,26 +25,6 @@ function Home() {
     ]
   };
 
-  const sampleRecipe2 = {
-    title: "Creamy Mushroom Risotto",
-    ingredients: [
-      "Arborio rice",
-      "Mixed mushrooms",
-      "White wine",
-      "Vegetable broth",
-      "Parmesan cheese",
-      "Butter and olive oil"
-    ],
-    instructions: [
-      "Sauté mushrooms until golden",
-      "Toast rice with onions",
-      "Add wine and let it absorb",
-      "Gradually add hot broth",
-      "Stir until creamy",
-      "Finish with parmesan and butter"
-    ]
-  };
-
   return (
     <div className="home-container">
       <div className="home-section title-section">
@@ -53,21 +33,18 @@ function Home() {
       </div>
 
       <div className="home-section recipes-preview">
-        <RecipeCard
-          recipe={sampleRecipe1}
-          expanded={{ ingredients: true, instructions: true }}
-          onToggleSection={() => {}}
-          showSaveButton={true}
-          saveToLocalStorage={() => {}}
-        />
-        <div className="home-sectionrecipes-preview-second">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <RecipeCard
-            recipe={sampleRecipe2}
-            expanded={false}
+            recipe={sampleRecipe1}
+            expanded={{ ingredients: true, instructions: true }}
             onToggleSection={() => {}}
             showSaveButton={true}
             saveToLocalStorage={() => {}}
           />
+
+          <p style={{ fontStyle: 'italic', fontSize: '0.9rem', color: '#666', margin: '4px 0 0 0' }}>
+            The recipe shown above is just a sample preview. Buttons below may not be fully functional yet.
+          </p>
         </div>
       </div>
 
@@ -78,11 +55,6 @@ function Home() {
             Discover delicious recipes based on ingredients you already have.
             From quick weeknight dinners to impressive dishes, find the perfect
             recipe for any occasion.
-          </p>
-
-          {/* 🔔 Note added right before the buttons */}
-          <p style={{ fontStyle: 'italic', fontSize: '0.9rem', color: '#666', marginBottom: '1rem' }}>
-            The recipes shown above are just sample previews. Buttons below may not be fully functional yet.
           </p>
 
           <div className="cta-buttons">
