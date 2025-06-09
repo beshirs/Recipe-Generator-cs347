@@ -1,3 +1,11 @@
+# Cookly Client
+
+This is the frontend React application for **Cookly**, a recipe suggestion web app that helps users find meals based on ingredients they already have.
+
+It provides a clean and intuitive UI for entering ingredients, browsing suggested recipes, and saving favorites locally.
+
+---
+
 # Getting Started with Create React App
 # React template redesigned for our project
 
