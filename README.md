@@ -60,6 +60,12 @@ To use our app: open http://localhost:3000
 - Save favorite recipes to local storage
 - View all recipes from the database
 
+## Unfinished Features
+
+- User login and authentication
+- Dietary filters (e.g., vegan, gluten-free)
+- Download saved recipes
+
 ## What We Learned
 Working on this project over the course of the term gave us hands-on expierence with various devleopment tools such as: 
 - Docker Desktop
