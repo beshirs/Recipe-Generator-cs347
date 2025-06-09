@@ -4,41 +4,53 @@
 
 **Cookly** is a web application that allows users to discover recipes based on ingredients they already have.
 
-Instead of requiring users to browse long lists or enter full recipe names, Cookly enables them to input one or more ingredients (e.g., `"eggs"`, `"spinach"`, etc.) and instantly receive a list of suggested recipes. The app is built with a user-first approach—minimalist, responsive, and quick to use.
+Instead of requiring users to browse long lists or enter full recipe names, Cookly enables them to input one or more ingredients (e.g., "eggs", "spinach", etc.) and instantly receive a list of suggested recipes. The app is built with a user-first approach—minimalist, responsive, and quick to use.
 
 Saved recipes are stored locally, and all recipe data is cleaned and stored in a MongoDB database.
 
 ---
 
-## Getting Started
+## Getting Started 1: Using Docker
 
 ### Install dependencies
 
-- Ensure Node.js and MongoDB are installed.
+- Ensure Node.js is installed (node.js download on google) 
+- Ensure Docker Desktop are installed and running
+- Ensure mongoose (MongoDB/pymongo) is installed (pip3 install)
 - Clone this repository:
 
-```bash
+``` bash
 git clone https://github.com/beshirs/Recipe-Generator-cs347.git
 cd Recipe-Generator-cs347
 ```
 
-### Backend setip
- - cd server
- - npm install
+Backend Setup
+``` bash
+cd server
+npm install
+```
 
-### Frontend setup
- - cd ../client
- - npm install
+Frontend Setup
+``` bash
+cd ../client
+npm install
+```
+
 
 ### Run the application
 In the root folder, run both the frontend and backend:
 
 ``` bash
-npm run dev
+docker-compose up --build
 ```
-The backend will run at http://localhost:3500
 
-The frontend will run at http://localhost:3000
+Docker will automatically build backend and frontend services, with starting a MongoDB container.
+
+To use our app: open http://localhost:3000
+
+The backend runs at http://localhost:3500
+
+---
 
 ## Existing Features
 - Search recipes by ingredient
@@ -47,9 +59,11 @@ The frontend will run at http://localhost:3000
 - Save favorite recipes to local storage
 - View all recipes from the database
 
-
-## Todo List
-UI improvements, Add filter for dietary restrictions (vegan, gluten-free, etc.), Enable login & user accounts(reaching)
-
-
-  
+## What We Learned
+Working on this project over the course of the term gave us hands-on expierence with various devleopment tools such as: 
+- Docker Desktop
+- MongoDB Atlas
+- Node.js/Express
+- React
+- Jest Unit Testing
+- Project Management(Sprints/Status Reports)
