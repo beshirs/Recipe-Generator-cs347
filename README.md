@@ -48,8 +48,6 @@ Docker will automatically build backend and frontend services, with starting a M
 
 To use our app: open http://localhost:3000
 
-The backend runs at http://localhost:3500
-
 ---
 
 ## Existing Features
