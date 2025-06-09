@@ -70,13 +70,13 @@ npm run dev
 - Share recipe links with others
 
 ## What We Learned
--Working on this project over the course of the term gave us hands-on experience with a variety of develoment tools and practices:
--Docker
--MongoDB
--Node.js and Express
--React
--Jest Testing
--Project Managemnt(Sprints/Status Reports)
+- Working on this project over the course of the term gave us hands-on experience with a variety of develoment tools and practices:
+- Docker
+- MongoDB
+- Node.js and Express
+- React
+- Jest Testing
+- Project Managemnt(Sprints/Status Reports)
 
 
 
