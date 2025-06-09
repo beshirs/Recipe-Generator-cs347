@@ -10,11 +10,12 @@ Saved recipes are stored locally, and all recipe data is cleaned and stored in a
 
 ---
 
-## Getting Started
+## Getting Started 1: Using Docker
 
 ### Install dependencies
 
-- Ensure Node.js and MongoDB are installed.
+- Ensure Node.js is installed 
+- Ensure Docker Desktop are installed and running
 - Clone this repository:
 
 ```bash
@@ -22,23 +23,37 @@ git clone https://github.com/beshirs/Recipe-Generator-cs347.git
 cd Recipe-Generator-cs347
 ```
 
-### Backend setip
- - cd server
- - npm install
-
-### Frontend setup
- - cd ../client
- - npm install
-
 ### Run the application
 In the root folder, run both the frontend and backend:
 
 ``` bash
+docker-compose up --build
+```
+Docker will automatically build backend and frontend services, with starting a MongoDB container.
+
+To use our app: open http://localhost:3000
+
+The backendruns at http://localhost:3500
+
+---
+## Getting Started 2 (Without Docker):
+
+Ensure Node.js, MongoDB Atlas, and all dependiencies are installed
+
+Backend Setup
+```bash
+cd server
+npm install
+```
+Frontend Setup
+```bash
+cd ../client
+npm install
+```
+Run the application
+```bash
 npm run dev
 ```
-The backend will run at http://localhost:3500
-
-The frontend will run at http://localhost:3000
 
 ## Existing Features
 - Search recipes by ingredient
@@ -47,9 +62,6 @@ The frontend will run at http://localhost:3000
 - Save favorite recipes to local storage
 - View all recipes from the database
 
-
-## Todo List
-UI improvements, Add filter for dietary restrictions (vegan, gluten-free, etc.), Enable login & user accounts(reaching)
 
 
   
