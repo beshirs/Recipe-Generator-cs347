@@ -16,14 +16,12 @@
 
 5. npm install express
 
-6. cd ..
+6. cd ../client
 
-7. cd client
+7. npm install express (ignore the vulnerabilities)
 
-8. npm install react-scripts
+8. cd ..
 
-9. cd ..
+9. npm run dev
 
-10. npm run dev
-
-11. Directs you to this browser: http://localhost:3000
+10. Directs you to this browser: http://localhost:3000

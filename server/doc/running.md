@@ -7,7 +7,7 @@ After following the steps listed in development.md, you can navigate this file t
 ## Home page
 
 - After running the command:
-  npm run dev
+  docker-compose up --build
 
 - You will be directed to our website or you could type:
   localhost:3000
@@ -35,6 +35,7 @@ After clicking search, you will be guided to /searchResult page where the corres
   or click the "All Recipes" button
 
 # My Recipes
+
 - When looking at recipe card, you have the option to save the recipe cards. This page displays your saved recipes
 
 ## About page
